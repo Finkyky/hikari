@@ -1,0 +1,30 @@
+name: Feature request
+description: Propose new behavior for Hikari.
+labels: [feature]
+body:
+  - type: textarea
+    id: user-need
+    attributes:
+      label: User need
+      description: What are you trying to accomplish? What problem does this solve for you?
+    validations:
+      required: true
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current behavior
+      description: What does Hikari (or your current workaround) do today?
+    validations:
+      required: true
+  - type: textarea
+    id: desired-behavior
+    attributes:
+      label: Desired behavior
+      description: What should Hikari do instead? Describe the observable behavior, not the implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Anything that limits the solution — platforms, resource budgets, compatibility.

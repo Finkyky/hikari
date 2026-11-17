@@ -1,0 +1,38 @@
+name: Bug report
+description: Report something Hikari does wrong.
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what did Hikari do instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: Minimal steps or command line that reproduces the bug.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Hikari version
+      description: Output of `hikari --version`.
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: e.g. Windows 11, macOS 15, Ubuntu 24.04.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Terminal output, error messages, or logs. Do not paste secrets or API keys.
+      render: text

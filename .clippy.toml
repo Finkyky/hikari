@@ -1,0 +1,9 @@
+disallowed-macros = [
+  { path = "std::dbg", reason = "For local testing only; use proper logging or assertions in committed code." },
+]
+disallowed-types = [
+  { path = "std::process::Command", reason = "Flashes a console window on Windows and bypasses the sandbox. Spawn processes through hikari_sandbox." },
+  { path = "tokio::process::Command", reason = "Flashes a console window on Windows and bypasses the sandbox. Spawn processes through hikari_sandbox.", allow-invalid = true },
+]
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true

@@ -1,0 +1,47 @@
+[workspace]
+members = ["crates/*", "xtask"]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+license = "MIT"
+publish = false
+rust-version = "1.97"
+repository = "https://github.com/Finkyky/hikari"
+
+[workspace.dependencies]
+hikari_app_server = { path = "crates/hikari_app_server" }
+hikari_cli = { path = "crates/hikari_cli" }
+hikari_config = { path = "crates/hikari_config" }
+hikari_core = { path = "crates/hikari_core" }
+hikari_exec = { path = "crates/hikari_exec" }
+hikari_features = { path = "crates/hikari_features" }
+hikari_llm = { path = "crates/hikari_llm" }
+hikari_mcp = { path = "crates/hikari_mcp" }
+hikari_protocol = { path = "crates/hikari_protocol" }
+hikari_sandbox = { path = "crates/hikari_sandbox" }
+hikari_store = { path = "crates/hikari_store" }
+hikari_tools = { path = "crates/hikari_tools" }
+hikari_tui = { path = "crates/hikari_tui" }
+
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+enum-iterator = "2.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+[workspace.lints.clippy]
+uninlined_format_args = "warn"
+wildcard_enum_match_arm = "warn"
+unwrap_used = "warn"
+dbg_macro = "deny"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = "symbols"
+opt-level = 3
