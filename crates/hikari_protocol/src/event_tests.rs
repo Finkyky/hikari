@@ -1,6 +1,8 @@
+#![allow(clippy::unwrap_used)]
+
 use serde_json::json;
 
-use crate::event::{Event, EventMsg, ToolRisk};
+use crate::event::{Event, EventMsg, TokenUsage, ToolRisk};
 use crate::ids::{CallId, SessionId, TurnId};
 
 fn turn() -> TurnId {
@@ -25,15 +27,28 @@ fn event_msg_round_trips_through_json() {
             call_id: CallId("c-1".into()),
             tool: "read_file".into(),
             risk: ToolRisk::ReadOnly,
+            arguments: "{}".into(),
         },
         EventMsg::ApprovalRequested {
             call_id: CallId("c-1".into()),
         },
+        EventMsg::ToolCallDenied {
+            call_id: CallId("c-1".into()),
+            reason: "denied".into(),
+        },
         EventMsg::ToolCallCompleted {
             call_id: CallId("c-1".into()),
             ok: true,
+            output: "out".into(),
         },
-        EventMsg::TurnCompleted { turn_id: turn() },
+        EventMsg::TurnCompleted {
+            turn_id: turn(),
+            usage: Some(TokenUsage {
+                input_tokens: 1,
+                output_tokens: 2,
+            }),
+        },
+        EventMsg::TurnAborted { turn_id: turn() },
         EventMsg::Error {
             message: "boom".into(),
         },
@@ -55,6 +70,7 @@ fn tool_call_requested_wire_shape() {
             call_id: CallId("c-1".into()),
             tool: "shell".into(),
             risk: ToolRisk::Dangerous,
+            arguments: "{}".into(),
         },
     };
     assert_eq!(
@@ -68,6 +84,7 @@ fn tool_call_requested_wire_shape() {
                 "call_id": "c-1",
                 "tool": "shell",
                 "risk": "dangerous",
+                "arguments": "{}",
             }
         })
     );

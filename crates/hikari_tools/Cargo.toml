@@ -9,3 +9,20 @@ repository.workspace = true
 
 [lints]
 workspace = true
+
+[dependencies]
+futures.workspace = true
+globset.workspace = true
+grep-regex.workspace = true
+grep-searcher.workspace = true
+hikari_llm.workspace = true
+hikari_protocol.workspace = true
+hikari_sandbox.workspace = true
+ignore.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

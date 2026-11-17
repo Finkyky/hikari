@@ -15,6 +15,7 @@ name = "hikari"
 path = "src/main.rs"
 
 [dependencies]
-anyhow.workspace = true
 clap.workspace = true
+hikari_exec.workspace = true
 hikari_features.workspace = true
+tokio.workspace = true

@@ -11,5 +11,14 @@ repository.workspace = true
 workspace = true
 
 [dependencies]
+anyhow.workspace = true
+hikari_config.workspace = true
 hikari_core.workspace = true
+hikari_llm.workspace = true
 hikari_protocol.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+
+[dev-dependencies]
+hikari_llm = { workspace = true, features = ["testing"] }
+tempfile.workspace = true

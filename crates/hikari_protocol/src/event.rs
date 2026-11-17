@@ -30,20 +30,36 @@ pub enum EventMsg {
         call_id: CallId,
         tool: String,
         risk: ToolRisk,
+        arguments: String,
     },
     ApprovalRequested {
         call_id: CallId,
     },
+    ToolCallDenied {
+        call_id: CallId,
+        reason: String,
+    },
     ToolCallCompleted {
         call_id: CallId,
         ok: bool,
+        output: String,
     },
     TurnCompleted {
+        turn_id: TurnId,
+        usage: Option<TokenUsage>,
+    },
+    TurnAborted {
         turn_id: TurnId,
     },
     Error {
         message: String,
     },
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub struct TokenUsage {
+    pub input_tokens: u64,
+    pub output_tokens: u64,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
