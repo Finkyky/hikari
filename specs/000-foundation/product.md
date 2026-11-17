@@ -39,8 +39,8 @@ user's CPU, RAM, and disk as scarce resources it must account for.
 
 ### Disk hygiene
 
-5. All persistent state lives under a single data directory (`$HIKARI_HOME`, defaulting to the
-   platform data dir). Hikari never writes elsewhere except files the user asked it to edit and
+5. All persistent state lives under a single data directory (`$HIKARI_HOME`, defaulting to
+   `~/.hikari`). Hikari never writes elsewhere except files the user asked it to edit and
    OS temp files it deletes before exit.
 6. The data directory has a configurable total size budget (default 1 GiB). When a write would
    exceed the budget, Hikari evicts the oldest sessions/checkpoints first and never fails the

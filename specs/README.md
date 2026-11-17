@@ -10,8 +10,11 @@ Hikari is spec-driven: features are designed and reviewed before they are implem
 3. Once the spec PR is merged and the issue is labeled `ready-to-implement`, code PRs implement
    the spec, one logical change per PR.
 
-`specs/000-foundation/` is the bootstrap exception: it predates the issue tracker and fixes the
-language, workspace layout, and engineering workflow every later spec builds on.
+Specs written before the issue tracker is in use are named `NNN-<slug>/` instead.
+`specs/000-foundation/` fixes the language, workspace layout, and engineering workflow every later
+spec builds on; `specs/001-exec-mvp/` is milestone M1.
+
+The `write-product-spec` and `write-tech-spec` skills in `.agents/skills/` scaffold new specs.
 
 ## Contents
 
